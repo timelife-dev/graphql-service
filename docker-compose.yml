@@ -1,0 +1,18 @@
+
+version: "3.9"
+
+services:
+  postgres_db:
+    container_name: timelife_db
+    image: postgres:14
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=dev
+    volumes:
+      - pgdata:/var/lib/postgresql/timelife/data
+
+volumes:
+  pgdata: {}
