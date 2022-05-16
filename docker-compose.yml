@@ -14,5 +14,15 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/timelife/data
 
+  redis_db:
+    container_name: timelife_redis
+    image: redis:7
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - cache:/var/lib/redis/timelife/data
+
 volumes:
   pgdata: {}
+  cache: {}
